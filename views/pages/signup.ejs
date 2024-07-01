@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head') %>
+
+    <body>
+        <main class="flex mx-auto w-full max-w-[400px] flex-col space-y-2.5 p-4 mt-12">
+            <div class="flex h-24 w-full items-end rounded-lg bg-green-500 p-3">
+                <div class="flex flex-row text-white items-center">
+                    <i aria-hidden="true" class="fa-3x fa-solid fa-icons pr-4"></i>
+                    <p class="text-[44px]">Finly</p>
+                </div>
+            </div>
+            <form action="/signup" method="post" class="space-y-3">
+                <div class="flex flex-col rounded-lg bg-slate-100 p-6 gap-4">
+                    <h1 class="text-2xl mb-3">Crie sua conta hoje</h1>
+                    <label for="" class="input input-bordered flex items-center gap-2">
+                        <i class="fa-solid fa-envelope opacity-70"></i>
+                    </label>
+                    <input type="email" name="email" class="grow" placeholder="Email">
+                    <label for="" class="input input-bordered flex items-center gap-2">
+                        <i class="fa-solid fa-key opacity-70"></i>
+                    </label>
+                    <input type="password" name="password" class="grow" placeholder="Password">
+
+                    <label for="" class="input input-bordered flex items-center gap-2">
+                        <i class="fa-solid fa-key opacity-70"></i>
+                    </label>
+                    <input type="password" name="repeatPassword" class="grow" placeholder="Repeat password">
+                </div>
+                <button type="button" class="btn btn-primary w-full">
+                    Sign up
+                    <i aria-hidden="true" class="fa-lg fa-arrow-right fa-solid ml-auto "></i>
+                </button>
+            </form>
+            <span>Já possui uma conta? <a href="/login" class="link link-primary link-hover">Log in</a></span>
+        </main>
+    </body>
+
+</html>

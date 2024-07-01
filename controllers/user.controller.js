@@ -4,23 +4,27 @@
 
 const User = require("../lib/models/user.model")
 
-const createUser = async (req, res) => {
-    await User.create({ email: "edmirocacoma99@gmail.com", password: "password" })
-    res.render('user', { message: 'User Created', user: null })
+const signup = async (req, res) => {
+    const { email, password } = req.body;
+    const query = { email }
+
+    const existingUser = await User.findOne(query);
+    if (existingUser) {
+        res.redirect('/signup');
+    } else {
+        const hashedpassword = await bcrypt.hash(password, 10);
+        const user = {
+            email, password: hashedpassword,
+        }
+
+        const result = await User.create(user);
+        req.session.userId = result._id;
+        res.redirect('/dashboard')
+    }
 }
 
-const getUser = async (req, res) => {
-  const user =  await User.findOne({ email: "edmirocacoma99@gmail.com" })
-    res.render('user', { message: 'User retrieved', user: user })
-}
-
-const deleteUser = async (req, res) => {
-    await User.findOneAndDelete({ email: "edmirocacoma99@gmail.com" })
-    res.render('user', { message: 'User Deleted', user: null })
-}
 
 module.exports = {
-    getUser,
-    createUser,
-    deleteUser,
+    signup,
 };
+
