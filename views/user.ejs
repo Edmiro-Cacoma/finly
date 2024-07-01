@@ -4,14 +4,14 @@
 
     <body>
         <div class="m-4">
-            <h1 class="text-emerald-500">
+            <h1 class="text-red-500 ">
                 <%= message %>
             </h1>
             <% if (user) { %>
-                <p>
-                    <%= user. %>
+                <p class="text-yellow-300">
+                    <%= user.email %>
                 </p>
-                <p>
+                <p class="text-green-600">
                     <%= user.password %>
                 </p>
                 <% } %>

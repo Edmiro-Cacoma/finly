@@ -1,21 +1,19 @@
 
 
 const userRouter = require('./routes/user.route');
-
 const express = require("express")
 const app = express()
 const morgan = require('morgan')
+const path = require("path")
 const Port = 3000
-const path = require('path');
+
 require('dotenv').config();
 require('./lib/dbconnect');
 
 
-
-app.use(express.static(path.join(__dirname, 'public')));
-
 app.set('views', './views')
 app.set('view engine', 'ejs')
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'))
 app.use('/users', userRouter);
 
